@@ -26,6 +26,20 @@ class CartItem extends React.Component {
       };
     });
   };
+
+  decreaseQuantity = () => {
+    const { qty } = this.state;
+
+    if (qty === 0) {
+      return;
+    }
+    this.setState((prevState) => {
+      return {
+        qty: prevState.qty - 1,
+      };
+    });
+  };
+
   render() {
     const { price, title, qty } = this.state;
     return (
@@ -47,10 +61,11 @@ class CartItem extends React.Component {
               onClick={this.increaseQuantity}
             />
             <img
-              src="https://cdn-icons.flaticon.com/png/128/2734/premium/2734848.png?token=exp=1638871584~hmac=9609e33f6719a8683f4eb0e2606379db"
+              src="https://cdn-icons-png.flaticon.com/128/992/992683.png"
               alt="decrease"
               className="actions-icons"
               style={styles.button}
+              onClick={this.decreaseQuantity}
             />
             <img
               src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png"
