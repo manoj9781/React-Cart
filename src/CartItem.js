@@ -10,17 +10,28 @@ class CartItem extends React.Component {
       qty: 1,
       img: '',
     };
-    }
-    
-     increaseQuantity = () => {
-        console.log("this", this.state);
-    }
+  }
+
+  increaseQuantity = () => {
+    // console.log('this', this.state);
+    //Set state form 1
+    //   this.setState({
+    //       qty:this.state.qty+1,
+    //   })
+
+    // setState form 2 if previous state required then use form 2
+    this.setState((prevState) => {
+      return {
+        qty: prevState.qty + 1,
+      };
+    });
+  };
   render() {
     const { price, title, qty } = this.state;
     return (
       <div className="cart-item">
         <div className="left-block">
-          <img style={styles.image}  />
+          <img style={styles.image} />
         </div>
         <div className="right-block">
           <div style={{ fontSize: 25 }}>{title}</div>
@@ -32,8 +43,8 @@ class CartItem extends React.Component {
               src="https://cdn-icons-png.flaticon.com/128/1828/1828926.png"
               alt="increase"
               className="actions-icons"
-                        style={styles.button}
-                        onClick={this.increaseQuantity}
+              style={styles.button}
+              onClick={this.increaseQuantity}
             />
             <img
               src="https://cdn-icons.flaticon.com/png/128/2734/premium/2734848.png?token=exp=1638871584~hmac=9609e33f6719a8683f4eb0e2606379db"
