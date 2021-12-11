@@ -2,37 +2,10 @@ import React from 'react';
 import './index.css';
 
 class CartItem extends React.Component {
-  increaseQuantity = () => {
-    // console.log('this', this.state);
-    //Set state form 1
-    //   this.setState({
-    //       qty:this.state.qty+1,
-    //   })
-
-    // setState form 2 if previous state required then use form 2
-    this.setState((prevState) => {
-      return {
-        qty: prevState.qty + 1,
-      };
-    });
-  };
-
-  decreaseQuantity = () => {
-    const { qty } = this.state;
-
-    if (qty === 0) {
-      return;
-    }
-    this.setState((prevState) => {
-      return {
-        qty: prevState.qty - 1,
-      };
-    });
-  };
-
   render() {
     console.log(this.props);
     const { price, title, qty } = this.props.product;
+    const { product, onIncreaseQuantity, onDecreaseQuantity } = this.props;
     return (
       <div className="cart-item">
         <div className="left-block">
@@ -49,14 +22,14 @@ class CartItem extends React.Component {
               alt="increase"
               className="actions-icons"
               style={styles.button}
-              onClick={this.increaseQuantity}
+              onClick={ ()=> onIncreaseQuantity(product) }
             />
             <img
               src="https://cdn-icons-png.flaticon.com/128/992/992683.png"
               alt="decrease"
               className="actions-icons"
               style={styles.button}
-              onClick={this.decreaseQuantity}
+              onClick={()=>onDecreaseQuantity(product)}
             />
             <img
               src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png"
@@ -87,3 +60,35 @@ const styles = {
 };
 
 export default CartItem;
+
+
+
+
+
+// increaseQuantity = () => {
+//   // console.log('this', this.state);
+//   //Set state form 1
+//   //   this.setState({
+//   //       qty:this.state.qty+1,
+//   //   })
+
+//   // setState form 2 if previous state required then use form 2
+//   this.setState((prevState) => {
+//     return {
+//       qty: prevState.qty + 1,
+//     };
+//   });
+// };
+
+// decreaseQuantity = () => {
+//   const { qty } = this.state;
+
+//   if (qty === 0) {
+//     return;
+//   }
+//   this.setState((prevState) => {
+//     return {
+//       qty: prevState.qty - 1,
+//     };
+//   });
+// };
