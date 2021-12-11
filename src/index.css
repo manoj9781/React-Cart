@@ -7,30 +7,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.cart-item{
+.cart-item {
   display: inline-flex;
   margin: 20px 10px;
 }
 
-.cart-item .right-block{
+.cart-item .right-block {
   padding: 0 20px;
 }
 
-.cart-item-actions{
+.cart-item-actions {
   margin-top: 20px;
 }
 
-.action-icons{
+.action-icons {
   height: 25px;
   width: 25px;
   margin-right: 10px;
 }
 
-.action-icons:hover{
+.action-icons:hover {
   cursor: pointer;
 }
 
-.cart{
+.cart {
   display: flex;
   flex-direction: column;
 }
