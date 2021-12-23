@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div style={styles.nav}>
       <div style={styles.cartIconContainer}>
         <img
           style={styles.cartIcon}
-          src="https://cdn-icons.flaticon.com/png/128/649/premium/649931.png?token=exp=1639631816~hmac=22c6cda717b27f81380c39f090c21f29"
+          src="https://cdn-icons.flaticon.com/png/128/3002/premium/3002254.png?token=exp=1640264497~hmac=d6cc40dffc97669a3bbd4ecd7e65a28c"
           alt="cartIcon"
         />
-        <span style={styles.cartCount}>3</span>
+        <span style={styles.cartCount}>{props.count} </span>
       </div>
     </div>
   );
