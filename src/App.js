@@ -1,6 +1,8 @@
 import React from 'react';
 import Cart from './Cart';
 import Navbar from './Navbar';
+import './index.css';
+
 
 class App extends React.Component {
   constructor() {
@@ -71,6 +73,15 @@ class App extends React.Component {
     return count;
   }
 
+  getCartTotal = () => {
+    const { products } = this.state;
+    let total = 0;
+    products.map((product) => {
+      total = total + product.qty * product.price;
+    })
+    return total;
+  }
+
   render() {
     const { products } = this.state;
     return (
@@ -82,6 +93,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
+        <div className='total-Value'>Total :{this.getCartTotal()} </div>
       </div>
     );
   }

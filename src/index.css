@@ -34,3 +34,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
+.total-value{
+  padding: 20px;
+  margin-top: 24px;
+  font-size: 24px;
+  
+}
