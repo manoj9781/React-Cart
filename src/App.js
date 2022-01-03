@@ -66,10 +66,19 @@ class App extends React.Component {
     if (products[index].qty === 0) {
       return;
     }
-    products[index].qty -= 1;
-    this.setState({
-      products,
-    });
+    // products[index].qty -= 1;
+    // this.setState({
+    //   products,
+    // });
+    const docRef = this.db.collection('products').doc(products[index].id);
+
+    docRef.update({
+      qty: products[index].qty - 1,
+    }).then(() => {
+      console.log("Update Succesfully");
+    }).catch((error) => {
+      console.log("Error", error);
+    })
   };
 
   handleDeleteProduct = (id) => {
@@ -136,14 +145,14 @@ class App extends React.Component {
 }
 
 
-const styles = {
-  button: {
-    color:'#444',
-    fontSize: 24,
-    margin: 20,
+// const styles = {
+//   button: {
+//     color:'#444',
+//     fontSize: 24,
+//     margin: 20,
     
-  }
-}
+//   }
+// }
 export default App;
 
 // import React from "react";
