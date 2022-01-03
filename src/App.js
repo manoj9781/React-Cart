@@ -13,6 +13,7 @@ class App extends React.Component {
       products: [],
       loading: true,
     };
+    this.db = firebase.firestore();
   }
 
   componentDidMount() {
@@ -28,8 +29,7 @@ class App extends React.Component {
     //     });
     //     this.setState({ products: products, loading: false });
     //   });
-    firebase
-      .firestore()
+   this.db
       .collection('products')
       .onSnapshot((snapshot) => {
         const products = snapshot.docs.map((doc) => {
@@ -92,11 +92,27 @@ class App extends React.Component {
     return total;
   };
 
+  addProduct = () => {
+    this.db
+      .collection('products')
+      .add({
+        img: "",
+        price: 78,
+        qty: 2,
+        title:"Washing Machine",
+      }).then((docRef) => {
+        console.log("Product Has been added", docRef);
+      }).catch((err) => {
+      console.log("Error", err);
+    })
+  }
+
   render() {
     const { products } = this.state;
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
+        <button style={styles.button} onClick={this.addProduct}>Add a Product</button>
         <Cart
           products={products}
           onIncreaseQuantity={this.handleIncreaseQuantity}
@@ -106,6 +122,16 @@ class App extends React.Component {
         <div className="total-Value">Total :{this.getCartTotal()} </div>
       </div>
     );
+  }
+}
+
+
+const styles = {
+  button: {
+    color:'#444',
+    fontSize: 24,
+    margin: 20,
+    
   }
 }
 export default App;
